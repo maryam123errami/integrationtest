@@ -26,8 +26,8 @@ import getpass
 import os
 
 
-
 os.environ["TAVILY_API_KEY"] = "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"
+
 
 """#Create tools
 
