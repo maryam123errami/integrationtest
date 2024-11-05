@@ -1,8 +1,5 @@
 name: Run Unit Test via Pytest
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  run: |
-    coverage run -m pytest -v -s
+
 on: [push]
 
 jobs:
@@ -28,9 +25,10 @@ jobs:
           ruff --format=github --target-version=py310 .
         continue-on-error: true
       - name: Test with pytest
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          coverage run -m pytest  -v -s
+          coverage run -m pytest -v -s
       - name: Generate Coverage Report
         run: |
           coverage report -m
-      
