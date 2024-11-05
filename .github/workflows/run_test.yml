@@ -1,5 +1,5 @@
 name: Run Unit Test via Pytest
-
+${{ secrets.OPENAI_API_KEY }}
 on: [push]
 
 jobs:
