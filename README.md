@@ -21,4 +21,4 @@ pytest -v -s
 
 If you have any questions about the project please raise an Issue on GitHub. 
 
-[![Coverage Status](coverage.svg)](https://github.com/ericsalesdeandrade/pytest-github-actions-example)"# integrationtest" 
+[![Coverage Status](coverage.svg)](https://github.com/ericsalesdeandrade/pytest-github-actions-example)
