@@ -7,7 +7,7 @@ import csv
 from datetime import datetime
 
 from langchain.schema import HumanMessage
-from dataset_preparation import DatasetManager, TestDataset, ConversationTestCase
+from src.dataset_preparation import DatasetManager, TestDataset, ConversationTestCase
 from src.agent import agent_executor 
     
 

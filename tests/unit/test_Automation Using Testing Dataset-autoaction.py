@@ -7,7 +7,7 @@ import csv
 from datetime import datetime
 from unittest.mock import Mock
 from src.autoaction import graph
-from dataset_preparation import DatasetManager, TestDataset, ConversationTestCase
+from src.dataset_preparation import DatasetManager, TestDataset, ConversationTestCase
 
 def prepare_email_dataset(self) -> TestDataset:
         """Prepare test dataset for email agent"""
