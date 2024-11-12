@@ -15,5 +15,3 @@ langfuse==2.52.1
 beautifulsoup4 
 guardrails-ai==0.4.2 
 
-guardrails hub install hub://guardrails/sensitive_topics 
-guardrails hub install hub://guardrails/toxic_language
