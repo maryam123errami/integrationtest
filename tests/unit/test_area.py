@@ -1,6 +1,6 @@
 from langchain.schema import HumanMessage
 import pytest
-from tools_agents_build import graph
+from src.area import graph
 # import sys
 # sys.path.append('./src')
 # Cas de test prédéfinis
