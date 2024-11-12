@@ -15,5 +15,5 @@ langchain_core==0.3.9
 langfuse==2.52.1
 beautifulsoup4 
 git+https://github.com/guardrails-ai/guardrails.git@main
-guardrails-ai==0.4.2 
+
 
