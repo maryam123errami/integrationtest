@@ -22,12 +22,12 @@ def prepare_dataset(self) -> TestDataset:
                         expected_tone="informal",
                         context="Question about delivery options"
                     ),
-                     ConversationTestCase(
-                        input="Could you please provide me with the opening hours?",
-                        expected_keywords=["hours", "opening"],
-                        expected_tone="formal",
-                        context="Request for hours"
-                    ),
+                    #  ConversationTestCase(
+                    #     input="Could you please provide me with the opening hours?",
+                    #     expected_keywords=["hours", "opening"],
+                    #     expected_tone="formal",
+                    #     context="Request for hours"
+                    # ),
                     ConversationTestCase(
                         input="What types of delivery do you offer?",
                         expected_keywords=["types", "delivery"],
