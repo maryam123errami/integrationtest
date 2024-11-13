@@ -16,5 +16,5 @@ langchain-core
 langchain-community
 langsmith
 langchain-groq
-langchain-openai
+langchain-openai==0.2.1
 langchain-google-genai
