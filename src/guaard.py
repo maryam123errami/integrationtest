@@ -24,10 +24,10 @@ import os
 
 # api_key = os.environ.get('GUARDRAILS_API_KEY')
 # Initialize ChatGPT with the API key from environment variables
-from langchain.llms import OpenAI
+from openai import AsyncOpenAI
 import os
 
-llm = OpenAI(model_name="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
+client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize environment variables
 api_key = os.environ.get('GUARDRAILS_API_KEY')
 
