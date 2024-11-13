@@ -20,7 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           RUN pip install git+https://github.com/guardrails-ai/guardrails.git@main
-          RUN pip install PyJWT
+        
           RUN yes | guardrails configure --token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDk1MDA1MzYzNTE5OTY1Njg3MyIsImFwaUtleUlkIjoiMDM2MDJmNzctOGM0Yi00OGJjLWIzYTQtMDAyYWY4ZTAwY2JhIiwiaWF0IjoxNzMwODA2MDIwLCJleHAiOjE3Mzg1ODIwMjB9.whSWnZpcIIJvGQUXFXj4h3rwGLZ26LuXfVkZoQOypgo"
           RUN pip install guardrails-ai==0.4.2
           RUN guardrails hub install hub://guardrails/sensitive_topics
