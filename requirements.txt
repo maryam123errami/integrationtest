@@ -10,7 +10,7 @@ langfuse
 
 tenacity
 
-langserve==0.3.0
+langserve
 fastapi==0.115.0
 langgraph==0.2.34
 langchain_core==0.2.3
