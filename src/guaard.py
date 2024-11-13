@@ -23,11 +23,10 @@ from langserve import add_routes
 import os
 
 # api_key = os.environ.get('GUARDRAILS_API_KEY')
-# Initialize ChatGPT with the API key from environment variables
-from openai import AsyncOpenAI
+from langchain.chat_models import ChatOpenAI
 import os
 
-client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+llm = ChatOpenAI(model_name="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize environment variables
 api_key = os.environ.get('GUARDRAILS_API_KEY')
 
