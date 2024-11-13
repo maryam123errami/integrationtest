@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from langserve import add_routes
 from langchain_core.runnables import RunnableLambda
 from langchain_core.messages import HumanMessage, BaseMessage
-from langchain_core.language_models import chat_models
+from langchain.chat_models.base import BaseChatModel
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import StateGraph, END
