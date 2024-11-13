@@ -1,26 +1,34 @@
+# from langfuse import Langfuse
+# from langfuse.callback import CallbackHandler
+# from bs4 import BeautifulSoup
 import os
-from typing import Annotated, Literal, List, Sequence, Optional
-from typing_extensions import TypedDict
+from langchain_core.runnables import RunnableLambda
+# from guardrails.hub import SensitiveTopic, ToxicLanguage
+from guardrails.hub.guardrails.sensitive_topics.validator import SensitiveTopic
+from guardrails.hub.guardrails.toxic_language.validator import ToxicLanguage
+
+# If RestrictToTopic is needed, import it similarly based on its actual location
+from guardrails import Guard
+from langchain_openai import ChatOpenAI
+from langchain_core.messages import HumanMessage, BaseMessage
 from pydantic import BaseModel
+from typing import Annotated, Literal, List, Dict, Any, TypedDict, Sequence, Optional
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from typing_extensions import TypedDict
+from langgraph.graph import StateGraph, END
+import operator
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from langserve import add_routes
-from langchain_core.runnables import RunnableLambda
-from langchain_core.messages import HumanMessage, BaseMessage
+import os
 
-from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langgraph.graph import StateGraph, END
-from guardrails import Guard
-from guardrails.hub.guardrails.sensitive_topics.validator import SensitiveTopic
-from guardrails.hub.guardrails.toxic_language.validator import ToxicLanguage
-import operator
+# api_key = os.environ.get('GUARDRAILS_API_KEY')
+# Initialize ChatGPT with the API key from environment variables
+llm = ChatOpenAI(model="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
 
 # Initialize environment variables
 api_key = os.environ.get('GUARDRAILS_API_KEY')
-from openai import OpenAI
-import os
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Define workflow members and system prompt
 members = ["ToxicityChecker", "SensitiveTopicChecker"]
