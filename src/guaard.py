@@ -9,7 +9,7 @@ from guardrails.hub.guardrails.toxic_language.validator import ToxicLanguage
 
 # If RestrictToTopic is needed, import it similarly based on its actual location
 from guardrails import Guard
-from langchain_openai import ChatOpenAI
+
 from langchain_core.messages import HumanMessage, BaseMessage
 from pydantic import BaseModel
 from typing import Annotated, Literal, List, Dict, Any, TypedDict, Sequence, Optional
@@ -24,8 +24,10 @@ import os
 
 # api_key = os.environ.get('GUARDRAILS_API_KEY')
 # Initialize ChatGPT with the API key from environment variables
-llm = ChatOpenAI(model="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
+from langchain.llms import OpenAI
+import os
 
+llm = OpenAI(model_name="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize environment variables
 api_key = os.environ.get('GUARDRAILS_API_KEY')
 
