@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from langserve import add_routes
 from langchain_core.runnables import RunnableLambda
 from langchain_core.messages import HumanMessage, BaseMessage
-from langchain_openai import ChatOpenAI
+
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import StateGraph, END
 from guardrails import Guard
@@ -17,7 +17,10 @@ import operator
 
 # Initialize environment variables
 api_key = os.environ.get('GUARDRAILS_API_KEY')
-llm = ChatOpenAI(model="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
+from openai import OpenAI
+import os
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Define workflow members and system prompt
 members = ["ToxicityChecker", "SensitiveTopicChecker"]
