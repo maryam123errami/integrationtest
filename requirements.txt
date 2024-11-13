@@ -12,7 +12,7 @@ tenacity
 
 langserve
 fastapi==0.115.0
-langgraph==0.2.34
+langgraph
 langchain_core==0.2.3
 langchain_openai
 tenacity==8.1.0
