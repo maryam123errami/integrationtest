@@ -2,18 +2,20 @@
 
 
 pytest==7.2.2
+
 pytest-cov==4.0.0
 ruff==v0.0.260
 coverage-badge~=1.1.0
-beautifulsoup4 
-langfuse 
-tenacity
-langserve
+langchain==0.3.2
+langserve==0.3.0
 fastapi==0.115.0
-langgraph
-langchain
-langchain-community 
-langchain_core==0.2.3
+langgraph==0.2.34
+langchain_community==0.3.1
 langchain_openai
 tenacity==8.1.0
-langchain-google-genai
+langchain_core==0.3.9
+
+
+langfuse==2.52.1
+beautifulsoup4 
+
