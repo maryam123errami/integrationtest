@@ -23,7 +23,7 @@ jobs:
       - name: Install Guardrails
         run: |
           pip install git+https://github.com/guardrails-ai/guardrails.git@main
-         
+          pip install guardrails-ai==0.4.2
           yes | guardrails configure --token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDk1MDA1MzYzNTE5OTY1Njg3MyIsImFwaUtleUlkIjoiMDM2MDJmNzctOGM0Yi00OGJjLWIzYTQtMDAyYWY4ZTAwY2JhIiwiaWF0IjoxNzMwODA2MDIwLCJleHAiOjE3Mzg1ODIwMjB9.whSWnZpcIIJvGQUXFXj4h3rwGLZ26LuXfVkZoQOypgo"
           guardrails hub install hub://guardrails/sensitive_topics
           guardrails hub install hub://guardrails/toxic_language
