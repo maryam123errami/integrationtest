@@ -14,7 +14,7 @@ tenacity
 langchain
 langchain-core
 langchain-community
-langsmith
+langsmith==0.1.131
 langchain-groq
 langchain-openai==0.2.1
 langchain-google-genai
