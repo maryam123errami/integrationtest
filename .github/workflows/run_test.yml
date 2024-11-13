@@ -1,49 +1,42 @@
-name: Run Unit Tests with Pytest
+name: Run Unit Test via Pytest
 
 on: [push]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
         python-version: ["3.10"]
-    
+
     steps:
       - uses: actions/checkout@v3
-      
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      
-      - name: Install and configure Guardrails
+          pip install orjson==3.10.11 packaging==24.2 pluggy==1.5.0 propcache==0.2.0 pydantic==2.9.2 pydantic-core==2.23.4 pydantic-settings==2.6.1 pytest==7.2.2 pytest-cov==4.0.0 python-dotenv==1.0.1 regex==2024.11.6 requests==2.32.3
+      - name: Install Guardrails
         run: |
-          pip install guardrails-ai==0.4.2
           pip install git+https://github.com/guardrails-ai/guardrails.git@main
-          yes | guardrails configure --token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDk1MDA1MzYzNTE5OTY1Njg3MyIsImFwaUtleUlkIjoiMDM2MDJmNzctOGM0Yi00OGJjLWIzYTQtMDAyYWY4ZTAwY2JhIiwiaWF0IjoxNzMwODA2MDIwLCJleHAiOjE3Mzg1ODIwMjB9.whSWnZpcIIJvGQUXFXj4h3rwGLZ26LuXfVkZoQOypgo"  
+          pip install guardrails-ai==0.4.2
+          yes | guardrails configure --token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDk1MDA1MzYzNTE5OTY1Njg3MyIsImFwaUtleUlkIjoiMDM2MDJmNzctOGM0Yi00OGJjLWIzYTQtMDAyYWY4ZTAwY2JhIiwiaWF0IjoxNzMwODA2MDIwLCJleHAiOjE3Mzg1ODIwMjB9.whSWnZpcIIJvGQUXFXj4h3rwGLZ26LuXfVkZoQOypgo"
           guardrails hub install hub://guardrails/sensitive_topics
           guardrails hub install hub://guardrails/toxic_language
-        continue-on-error: true
-      
-      - name: Install and run Ruff linter
+      - name: Lint with Ruff
         run: |
           pip install ruff
           ruff --format=github --target-version=py310 .
         continue-on-error: true
-      
-      - name: Run tests with pytest and coverage
+      - name: Test with pytest
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          pip install pytest coverage
           coverage run -m pytest -v -s
-      
-      - name: Generate coverage report
-        run: coverage report -m
+      - name: Generate Coverage Report
+        run: |
+          coverage report -m
